@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test
+from django.views.generic.list import ListView
 
 from users.models import User
 from admins.forms import UserAdminRegistrationForm, UserAdminProfileForm
@@ -29,13 +30,14 @@ def admin_users_create(request):
 
 
 # Read
-@user_passes_test(lambda u: u.is_staff)
-def admin_users(request):
-    context = {
-        'title': 'Geek Shop - Пользователи',
-        'users': User.objects.all(),
-    }
-    return render(request, 'admins/admin-users-read.html', context)
+class UserListView(ListView):
+    model = User
+    template_name = 'admins/admin-users-read.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(UserListView, self).get_context_data(**kwargs)
+        context['title'] = 'Geek Shop - Пользователи'
+        return context
 
 
 # Update

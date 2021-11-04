@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.decorators import user_passes_test
 from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
 from users.models import User
 from admins.forms import UserAdminRegistrationForm, UserAdminProfileForm
@@ -27,7 +27,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(UserCreateView, self).get_context_data(**kwargs)
-        context['title'] = 'Geek Shop - Обновление пользователя'
+        context['title'] = 'Geek Shop - Создание пользователя'
         return context
 
 
@@ -43,23 +43,17 @@ class UserListView(ListView):
 
 
 # Update
-@user_passes_test(lambda u: u.is_staff)
-def admin_users_update(request, id):
-    selected_user = User.objects.get(id=id)
-    if request.method == 'POST':
-        form = UserAdminProfileForm(instance=selected_user, files=request.FILES, data=request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Данные успешно изменены!')
-            return HttpResponseRedirect(reverse('admins:admin_users'))
-    else:
-        form = UserAdminProfileForm(instance=selected_user)
+class UserUpdateView(SuccessMessageMixin, UpdateView):
+    model = User
+    form_class = UserAdminProfileForm
+    success_url = reverse_lazy('admins:admin_users')
+    success_message = 'Данные успешно изменены!'
+    template_name = 'admins/admin-users-update-delete.html'
 
-    context = {'title': 'Geek Shop - Обновление пользователя',
-               'form': form,
-               'selected_user': selected_user,
-    }
-    return render(request, 'admins/admin-users-update-delete.html', context)
+    def get_context_data(self, **kwargs):
+        context = super(UserUpdateView, self).get_context_data(**kwargs)
+        context['title'] = 'Geek Shop - Обновление пользователя'
+        return context
 
 
 # Delete

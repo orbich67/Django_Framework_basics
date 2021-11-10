@@ -16,11 +16,9 @@
                         <div class="card-header">
                             <h3 class="text-center font-weight-light my-4">Верификация не пройдена.</h3>
                 {% endif %}
-                <button class="btn btn-round form-control">
-                    <a href="{% url 'index' %}" class="">
-                        На главную
-                    </a>
-                </button>
+                    <div class="form-group mt-4 mb-0">
+                        <a href="{% url 'index' %}" class="btn btn-primary btn-block">На главную</a>
+                    </div>
             </div>
         </main>
 {% endblock %}

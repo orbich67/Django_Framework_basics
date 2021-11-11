@@ -5,8 +5,9 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.contrib import auth, messages
 
-from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
+from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm, UserOtherProfileForm
 from users.models import User
+from django.db import transaction
 
 
 def login(request):
@@ -45,19 +46,23 @@ def registration(request):
 
 
 @login_required
+@transaction.atomic
 def profile(request):
     user = request.user
     if request.method == 'POST':
         form = UserProfileForm(instance=user, files=request.FILES, data=request.POST)
-        if form.is_valid():
+        other_form = UserOtherProfileForm(instance=user.userprofile, data=request.POST)
+        if form.is_valid() and other_form.is_valid():
             form.save()
             messages.success(request, 'Данные успешно изменены!')
             return HttpResponseRedirect(reverse('users:profile'))
     else:
         form = UserProfileForm(instance=user)
+        other_form = UserOtherProfileForm(instance=user.userprofile)
     context = {'title': 'GeekShop - Профиль',
                'form': form,
-    }
+               'other_form': other_form,
+               }
     return render(request, 'users/profile.html', context)
 
 

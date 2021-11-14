@@ -13,8 +13,10 @@
             <li class="list-group-item bg-light">
                 <div class="row text-center">
                     <div class="col-lg-4">
+                        <label>
                         <input name="{{ basket.id }}" type="number" class="form-control"
                                value="{{ basket.quantity }}" min="0">
+                        </label>
                     </div>
                     <div class="col-lg-4">{{ basket.sum }} руб.</div>
                     <div class="col-lg-4">
@@ -33,7 +35,11 @@
             <h4 class="float-right">{{ baskets.0.total_sum }} руб.</h4>
         </div>
     </div>
-    <button type="button" class="btn btn-success btn-lg float-right">Оформить</button>
+    <button id="purchase-btn" type="button" class="btn btn-primary">
+        <a id="purchase-link" href="{% url 'orders:order_create' %}">
+            Оформить
+        </a>
+        </button>
     {% else %}
     <h4 class="mt-3 align-items-center mb-3">Корзина пуста!</h4>
     {% endif %}

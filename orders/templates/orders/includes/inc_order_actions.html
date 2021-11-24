@@ -1,0 +1,26 @@
+{% if object.status == 'FM' %}
+<div class="card-body">
+    <div>
+       <button id="purchase-b" type="button" class="btn btn-primary">
+           <a id="purchase-link" href="{% url 'orders:order_forming_complete' object.pk %}">
+               Совершить покупку
+           </a>
+       </button>
+       <button id="purchase-b" type="button" class="btn btn-primary">
+           <a id="purchase-link" href="{% url 'orders:order_delete' object.pk %}">Удалить</a>
+       </button>
+    </div>
+</div>
+{% endif %}
+<div class="card-body">
+    <button id="purchase-b" type="button" class="btn btn-primary">
+       <a id="purchase-link" href="{% url 'orders:orders_list' %}">
+           К списку заказов
+       </a>
+    </button>
+    <button id="purchase-b" type="button" class="btn btn-primary">
+       <a id="purchase-link" href="{% url 'index' %}">
+           На главную
+       </a>
+    </button>
+</div>

@@ -5,6 +5,11 @@
     <link href="{% static 'css/profile.css' %}" rel="stylesheet">
 {% endblock %}
 
+{% block js %}
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'js/basket.js' %}"></script>
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <div class="row">
@@ -36,6 +41,30 @@
                             {{ form.last_name }}
                         </div>
                     </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="small mb-1" for="{{ other_form.gender.id_for_label }}">Пол</label>
+                            {{ other_form.gender }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="small mb-1" for="{{ other_form.tagline.id_for_label }}">Теги</label>
+                            {{ other_form.tagline }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="small mb-1" for="{{ other_form.aboutMe.id_for_label }}">О себе</label>
+                            {{ other_form.aboutMe }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="small mb-1" for="{{ form.age.id_for_label }}">Возраст</label>
+                            {{ form.age }}
+                        </div>
+                    </div>
                 </div>
                 <div class="form-row mb-2">
                     <div class="col-lg-12">
@@ -52,8 +81,7 @@
                             {{ form.username }}
                     </div>
                     <div class="col-lg-6">
-                        <label class="small mb-1" for="{{ form.email.id_for_label }}">Адрес электронной
-                            почты</label>
+                        <label class="small mb-1" for="{{ form.email.id_for_label }}">Адрес электронной почты</label>
                             {{ form.email }}
                     </div>
                 </div>

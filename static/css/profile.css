@@ -1,3 +1,97 @@
 body {
-    padding-top: 56px;
+    padding-top: 60px;
+}
+
+#purchase-btn {
+    margin-left: 20px;
+    width: 115px;
+    background-color: #23364e;
+    border-color: #23364e;
+    color: white;
+}
+
+#purchase-b {
+    margin-left: 20px;
+    width: 220px;
+    background-color: #23364e;
+    border-color: #23364e;
+    color: white;
+}
+
+#purchase-link {
+    text-decoration: none;
+    color: white;
+}
+
+.button-order {
+	background-color:  #ffffff;
+	box-shadow: 0px 2px 4.85px 0.15px rgba(33, 33, 33, 0.35);
+	width: 212px;
+	height: 45px;
+	display: block;
+	text-transform: uppercase;
+	text-align: center;
+	border-radius: 22px;
+	text-decoration: none;
+	color:  #212121;
+	font-size: 17px;
+	font-weight: 700;
+	line-height: 45px;
+	margin-top: 32px; 
+	letter-spacing: 3px;
+}
+.button-order:hover {
+	box-shadow: none;
+}
+.button-order:active {
+	box-shadow: none;
+	margin-top: 35px;
+}
+.button-order img{
+	padding-left: 22px;
+}
+
+table {
+	width: 100%;
+}
+td:first-child {
+	width: 235px;
+}
+
+.text-footer:nth-child(2) {
+	width: 422px;
+}
+.text-footer:nth-child(3) {
+	width: 363px;
+}
+.text-footer input {
+	border-width: 1px;
+	border-color:  #d9dee1;
+	border-style: solid;
+	background-color:  #ffffff;
+	width: 250px;
+	height: 46px;
+	outline: none;
+	color:  #6c6c6c;
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 22px;
+	text-align: left;
+	padding-left: 19px;
+	padding-right: 70px;
+}
+.text-footer input:focus {
+	border-width: 1px;
+	border-color:  #6c6c6c;
+	border-style: solid;
+}
+.footer .small {
+	text-transform: uppercase;
+	float: left;
+	color:  #6c6c6c;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 26px;
+	text-align: left;
+	margin-top: 35px;
 }

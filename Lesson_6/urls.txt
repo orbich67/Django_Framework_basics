@@ -1,0 +1,16 @@
+http://89.108.79.31/
+http://89.108.79.31/admins/users-create/
+http://89.108.79.31/admins/users/
+http://89.108.79.31/baskets/
+http://89.108.79.31/products/
+http://89.108.79.31/products/1/
+http://89.108.79.31/products/2/
+http://89.108.79.31/products/3/
+http://89.108.79.31/products/4/
+http://89.108.79.31/products/5/
+http://89.108.79.31/users/login/
+http://89.108.79.31/users/logout/
+http://89.108.79.31/users/profile/
+http://89.108.79.31/users/registration/
+http://89.108.79.31/orders/
+http://89.108.79.31/orders/create/

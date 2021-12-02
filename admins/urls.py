@@ -2,7 +2,7 @@ from django.urls import path
 
 from admins.views import index, UserCreateView, UserListView, UserUpdateView, UserDeleteView
 
-app_name = 'baskets'
+app_name = 'admins'
 
 urlpatterns = [
     path('', index, name='index'),

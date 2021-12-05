@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.utils.decorators import method_decorator
+from django.db.models import F
 
 from products.models import ProductCategory, Product
 from users.models import User

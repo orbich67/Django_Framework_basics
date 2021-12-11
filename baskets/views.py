@@ -5,21 +5,25 @@ from django.http import JsonResponse
 
 from products.models import Product
 from baskets.models import Basket
+from django.db.models import F, Q
 
 
 @login_required
 def basket_add(request, product_id):
     product = Product.objects.get(id=product_id)
-    baskets = Basket.objects.filter(user=request.user, product=product)
 
-    if not baskets.exists():
-        Basket.objects.create(user=request.user, product=product, quantity=1)
-        return HttpResponseRedirect(request.META['HTTP_REFERER'])
+    old_basket_items = Basket.objects.filter(user=request.user, product=product)
+
+    if not old_basket_items.exists():
+        Basket.objects.create(user=request.user, product=product)
+
+    if old_basket_items:
+        old_basket_items[0].quantity += 1
+        old_basket_items[0].save()
     else:
-        basket = baskets.first()
-        basket.quantity += 1
-        basket.save()
-        return HttpResponseRedirect(request.META['HTTP_REFERER'])
+        old_basket_items[0].quantity = F('quantity') + 1
+
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 @login_required
